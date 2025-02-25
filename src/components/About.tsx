@@ -46,7 +46,7 @@ export const About = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="mb-16">
-          <div className="bg-primary p-8 rounded-2xl text-white text-center border-4" style={{ borderColor: '#27026c' }}>
+          <div className="p-8 rounded-2xl text-white text-center border-4" style={{ backgroundColor: '#27026c', borderColor: '#27026c' }}>
             <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
             <p className="text-xl italic">
               "To revolutionize industries through smart, interconnected solutions that drive innovation and global progress."
