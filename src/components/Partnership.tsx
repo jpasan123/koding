@@ -78,7 +78,7 @@ export const Partnership = () => {
           ))}
         </div>
 
-        <motion.div variants={itemVariants} className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white text-center">
+        <motion.div variants={itemVariants} className="bg-[#27026c] rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">How to Partner With Us</h3>
           <p className="text-lg mb-8">
             Whether you're looking for investment opportunities, strategic partnerships, or technology collaborations, 

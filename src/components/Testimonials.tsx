@@ -110,7 +110,8 @@ export const Testimonials = () => {
         >
           <a
             href="#contact"
-            className="btn-primary inline-flex items-center"
+            className="inline-flex items-center px-6 py-3 text-white rounded-md"
+            style={{ backgroundColor: '#27026c' }}
           >
             See More Success Stories
           </a>

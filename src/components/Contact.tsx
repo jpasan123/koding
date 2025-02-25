@@ -99,7 +99,8 @@ export const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="btn-primary w-full"
+                  className="w-full px-4 py-2 rounded-lg text-white"
+                  style={{ backgroundColor: '#27026c' }}
                 >
                   Send Inquiry
                 </button>

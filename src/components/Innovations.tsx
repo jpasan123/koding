@@ -130,7 +130,7 @@ export const Innovations = () => {
         >
           <button
             onClick={() => setIsPopupOpen(true)}
-            className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-full hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+            className="inline-flex items-center px-7 py-3.5 bg-[#27026c] text-white text-sm font-medium rounded-full hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
           >
             See Our Cutting-Edge Technologies
           </button>
