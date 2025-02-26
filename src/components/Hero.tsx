@@ -107,32 +107,13 @@ export const Hero = () => {
                       Healthcare, IoT,
                     </motion.text>
                   </motion.svg>
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                    Healthcare, <span style={{ color: '#27026c' }}>IoT, Software,{' '}
-                    <motion.svg
-                      className="absolute inset-0 w-full h-full"
-                      viewBox="0 0 400 100"
-                      style={{ overflow: 'visible' }}
-                    >
-                      <motion.text
-                        x="0"
-                        y="80"
-                        className="text-4xl sm:text-5xl md:text-6xl font-bold"
-                        fill="none"
-                        stroke="rgba(255, 255, 255, 0.4)"
-                        strokeWidth="0.5"
-                        strokeLinejoin="round"
-                        initial="initial"
-                        animate="animate"
-                        variants={letterAnimationVariants}
-                        style={{ strokeDasharray: 1 }}
-                      >
-                        Software, Engineering
-                      </motion.text>
-                    </motion.svg>
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                      Engineering
-                    </span></span>
+                  {/* First part with #27026c */}
+                  <span className="bg-clip-text text-transparent" style={{ color: '#27026c' }}>
+                    Healthcare, IoT,{' '}
+                  </span>
+                  {/* Second part with #1E90FF */}
+                  <span className="bg-clip-text text-transparent" style={{ color: '#5DE2E7' }}>
+                    Software, Engineering
                   </span>
                 </span>
               </span>
