@@ -15,6 +15,7 @@ import { Footer } from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { TermsAndConditions } from './pages/TermsAndConditions';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import Cookies from './pages/Cookies';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,6 +31,7 @@ function App() {
       const hash = window.location.hash.slice(1);
       if (hash === 'terms') setCurrentPage('terms');
       else if (hash === 'privacy') setCurrentPage('privacy');
+      else if (hash === 'cookies') setCurrentPage('cookies');
       else setCurrentPage('home');
     };
 
@@ -48,6 +50,8 @@ function App() {
         return <TermsAndConditions />;
       case 'privacy':
         return <PrivacyPolicy />;
+      case 'cookies':
+        return <Cookies />;
       default:
         return (
           <main className="min-h-screen">

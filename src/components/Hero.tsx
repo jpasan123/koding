@@ -59,9 +59,9 @@ export const Hero = () => {
               transition={{ delay: 0.2 }}
             >
               Innovating the Future Across{' '}
-              <span className="text-[#27026c]">
-                Healthcare, IoT, and Software Engineering
-              </span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                Healthcare, <span style={{ color: '#27026c' }}>IoT, Software ,<span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Engineering</span></span>
+                </span>
             </motion.h1>
             <motion.p 
               className="text-xl text-gray-200 mb-8"

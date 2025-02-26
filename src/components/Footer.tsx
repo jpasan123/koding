@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const sections = {
     services: [
-      { name: 'AI Development', href: '#' },
       { name: 'Cloud Solutions', href: '#' },
       { name: 'Web Development', href: '#' },
       { name: 'Mobile Apps', href: '#' }
@@ -19,7 +19,7 @@ export const Footer = () => {
     legal: [
       { name: 'Privacy Policy', href: '#privacy' },
       { name: 'Terms of Service', href: '#terms' },
-      { name: 'Cookie Policy', href: '#' }
+      { name: 'Cookie Policy', href: '#cookies' }
     ]
   };
 

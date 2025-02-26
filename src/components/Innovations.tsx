@@ -35,7 +35,7 @@ export const Innovations = () => {
       icon: Activity,
       title: 'JendoAI',
       description: 'Revolutionary AI-driven cardiovascular diagnostics.',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80',
+      image: 'https://i.ibb.co/6RmXLjxK/jendo-medical-device-845-2.jpg',
     },
     {
       icon: Eye,
@@ -51,9 +51,9 @@ export const Innovations = () => {
     },
     {
       icon: Brain,
-      title: 'AI Analytics',
-      description: 'AI-Powered Predictive Analytics enhancing healthcare diagnostics and industrial automation.',
-      image: 'https://images.unsplash.com/photo-1488229297570-58520851e868?auto=format&fit=crop&q=80',
+      title: 'Software Develpment',
+      description: 'Custom software solutions for businesses and organizations.',
+      image: 'https://i.ibb.co/LWF7CQb/R-1.jpg',
     },
   ];
 

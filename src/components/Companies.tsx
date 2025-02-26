@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Heart, Eye, Cpu, Lightbulb, X, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { Heart, Eye, Cpu, Lightbulb, X, ChevronRight, Clock } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 
 export const Companies = () => {
@@ -21,11 +21,31 @@ export const Companies = () => {
     image: string;
     gallery: string[];
     description: string;
+    year: string;
+    milestone: string;
   };
 
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
+  const [rotationAngle, setRotationAngle] = useState(0);
 
-  const companies = [
+  // Continuous rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotationAngle((prev) => (prev + 0.3) % 360); // Smooth rotation
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle window resize for responsive recalculation
+  useEffect(() => {
+    const handleResize = () => {
+      setRotationAngle((prev) => prev + 0.001); // Trigger re-render
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const companies: Company[] = [
     {
       icon: Heart,
       name: 'Jendo',
@@ -35,6 +55,8 @@ export const Companies = () => {
       highlight: 'Developed JendoAI, a groundbreaking AI-powered early detection system for cardiovascular diseases.',
       cta: "Explore Jendo's Innovations",
       image: 'https://i.ibb.co/cbTZ66m/OIP-8-removebg-preview.png',
+      year: '2020',
+      milestone: 'Founded as the first subsidiary of Koding, focusing on cardiovascular health innovation.',
       gallery: [
         'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&q=80',
@@ -58,14 +80,16 @@ Impact:
       name: 'Optha',
       tagline: 'Smart Eye Care Solutions',
       industry: 'Ophthalmology & Medical Devices',
-      specialization: 'AI-driven diagnostic tools for early detection of eye diseases like diabetic retinopathy and glaucoma.',
-      highlight: 'Developed OpthaAI, an advanced retinal imaging and analysis system used by top ophthalmologists.',
+      specialization: 'AI-driven diagnostic tools for early detection of eye diseases.',
+      highlight: 'Developed OpthaAI, an advanced retinal imaging and analysis system.',
       cta: "Discover Optha's Breakthroughs",
       image: 'https://i.ibb.co/pB6bGWBm/Whats-App-Image-2024-10-31-at-07-58-49-d1b9d4a1-3.jpg',
+      year: '2021',
+      milestone: 'Launched to revolutionize eye care with AI-powered diagnostics.',
       gallery: [
-        'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1577401239170-897942555fb3?auto=format&fit=crop&q=80',
-        'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80',
+        'https://i.ibb.co/21nKX65b/OIP-17.jpg',
+        'https://i.ibb.co/8nYFzS2t/OIP-16.jpg',
+        'https://i.ibb.co/x8tr2zVc/OIP-15.jpg',
       ],
       description: `Optha is transforming eye care through innovative AI-powered diagnostic solutions. Our technology enables early detection of various eye conditions, leading to better treatment outcomes and preserved vision for millions.
 
@@ -86,10 +110,12 @@ Achievements:
       name: 'Effective Solutions',
       tagline: 'IoT & Smart Technologies',
       industry: 'IoT & Smart Systems',
-      specialization: 'Developing smart city infrastructure, industrial automation, and medical IoT devices.',
-      highlight: 'Leading the transformation of urban infrastructure with cutting-edge IoT solutions.',
+      specialization: 'Smart city infrastructure and industrial automation.',
+      highlight: 'Leading urban infrastructure transformation with IoT.',
       cta: 'See How We Power Smart Cities',
       image: 'https://i.ibb.co/RTBX4jZV/OIP-11.jpg',
+      year: '2022',
+      milestone: 'Established to drive smart city and IoT innovation.',
       gallery: [
         'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80',
@@ -113,11 +139,13 @@ Success Metrics:
       icon: Lightbulb,
       name: 'Koding Innovations',
       tagline: 'AI & R&D Hub',
-      industry: 'Artificial Intelligence & Emerging Technologies',
-      specialization: 'Advanced R&D in robotics, machine learning, and energy-efficient technologies.',
-      highlight: "Pushing the boundaries of what's possible with AI and robotics.",
-      cta: 'Explore Our Research & Development',
+      industry: 'AI & Emerging Technologies',
+      specialization: 'Advanced R&D in robotics and AI.',
+      highlight: 'Pushing boundaries in AI and robotics.',
+      cta: 'Explore Our R&D',
       image: 'https://i.ibb.co/PZ8sBKQw/Whats-App-Image-2025-02-21-at-07-41-33-38309d32.jpg',
+      year: '2023',
+      milestone: 'Created as the central R&D hub for all Koding companies.',
       gallery: [
         'https://images.unsplash.com/photo-1531746790731-6775af78c475?auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1526378800651-c32d170fe6f8?auto=format&fit=crop&q=80',
@@ -139,144 +167,180 @@ Achievements:
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { 
       opacity: 1, 
       scale: 1,
-      transition: {
-        type: "spring",
-        damping: 25,
-        stiffness: 500
-      }
+      transition: { type: "spring", damping: 25, stiffness: 500 }
     },
-    exit: { 
-      opacity: 0,
-      scale: 0.8,
-      transition: {
-        duration: 0.2
-      }
-    }
+    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } }
+  };
+
+  // Optimized getCirclePosition to place logos exactly on the border
+  const getCirclePosition = (index: number, totalItems: number) => {
+    const angle = (index * (360 / totalItems) + rotationAngle) * (Math.PI / 180);
+
+    // Responsive container size
+    const containerSize = window.innerWidth < 400 ? 280 : 
+                         window.innerWidth < 640 ? 350 :
+                         window.innerWidth < 768 ? 450 : 
+                         window.innerWidth < 1024 ? 600 : 
+                         700;
+
+    // Exact radius is half the container size (blue border)
+    const radius = containerSize / 2;
+
+    // Calculate precise x, y coordinates for the logo center
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+
+    return { x, y, rotate: 0 };
   };
 
   return (
-    <section id="companies" className="section-padding bg-gray-50" ref={ref}>
-      <motion.div
-        className="max-w-7xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-      >
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6">Our Companies</h2>
-          <p className="text-xl text-gray-600">
-            A powerhouse of innovation across healthcare, technology, and research
-          </p>
-        </motion.div>
+    <section id="companies" className="min-h-screen bg-gray-50 overflow-hidden flex items-center" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Our Companies</h2>
+            <p className="text-xl text-gray-600">A powerhouse of innovation across healthcare, technology, and research</p>
+          </div>
 
-        <div className="relative">
-          {/* Timeline line - hidden on mobile, shown on larger screens */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary hidden md:block"></div>
-          
-          <div className="space-y-8 md:space-y-24">
+          {/* Company Display */}
+          <div className="relative w-full min-h-[600px] md:min-h-[800px] flex justify-center items-center">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div className="relative w-[280px] h-[280px] xs:w-[350px] xs:h-[350px] sm:w-[450px] sm:h-[450px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px]">
+                {/* Rotating Border */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full border-[4px] border-blue-500/30"
+                  style={{
+                    background: 'linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05))',
+                    boxShadow: '0 0 30px rgba(59, 130, 246, 0.1)'
+                  }}
+                  animate={{ rotate: 360, scale: [1, 1.02, 1] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+
+                {/* Static guide rings */}
+                <div className="absolute inset-4 rounded-full border-2 border-dashed border-blue-400/20" />
+                <div className="absolute inset-8 rounded-full border border-purple-400/20" />
+
+                {/* Center Logo */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center z-20"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-xl transform scale-150" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-lg transform scale-125" />
+                    <img
+                      src="https://i.ibb.co/PZ8sBKQw/Whats-App-Image-2025-02-21-at-07-41-33-38309d32.jpg"
+                      alt="Koding Logo"
+                      className="w-40 h-40 rounded-full shadow-xl relative z-12 border-4 border-white transform hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Company Logos on the Border */}
+                {companies.map((company, index) => {
+                  const position = getCirclePosition(index, companies.length);
+                  return (
+                    <motion.div
+                      key={index}
+                      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      animate={{ x: position.x, y: position.y, rotate: position.rotate }}
+                      transition={{ duration: 0.1, ease: "linear" }} // Faster transition for smooth movement
+                    >
+                      <motion.div
+                        className="cursor-pointer group"
+                        whileHover={{ scale: 1.1 }}
+                        onClick={() => setSelectedCompany(company)}
+                      >
+                        <motion.div 
+                          className="bg-white p-2 rounded-full shadow-lg border-4 border-primary/10"
+                          whileHover={{ rotate: 12 }}
+                          style={{ transform: 'translate(-50%, -50%)' }} // Center logo on position
+                        >
+                          <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-white rounded-full overflow-hidden">
+                            <img
+                              src={company.image}
+                              alt={company.name}
+                              className="w-[85%] h-[85%] object-contain"
+                            />
+                          </div>
+                        </motion.div>
+
+                        {/* Company Name Tag */}
+                        <motion.div
+                          className="absolute left-1/2 top-full transform -translate-x-1/2 mt-2 whitespace-nowrap z-20"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          whileHover={{ y: -2 }}
+                        >
+                          <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg">
+                            <p className="text-xs sm:text-sm font-bold text-primary">{company.name}</p>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative mt-20 px-4">
+            <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary" />
+            
             {companies.map((company, index) => (
               <motion.div
                 key={index}
-                variants={itemVariants}
-                className={`relative md:w-[calc(50%-2rem)] ${
-                  index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'
+                className={`relative flex flex-col sm:flex-row items-start sm:items-center mb-12 sm:mb-16 ${
+                  index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'
                 }`}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                {/* Timeline Node - Adjusted for mobile */}
-                <div 
-                  className={`absolute top-0 hidden md:flex ${
-                    index % 2 === 0 ? '-left-8' : '-right-8'
-                  } w-16 h-16 bg-white rounded-full border-4 border-primary items-center justify-center shadow-lg`}
-                  style={{
-                    transform: 'translateX(-50%)',
-                    zIndex: 10,
-                  }}
-                >
-                  <company.icon className="w-8 h-8 text-primary" />
-                </div>
-
-                {/* Mobile Timeline Node */}
-                <div className="flex md:hidden items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-white rounded-full border-4 border-primary flex items-center justify-center shadow-lg">
-                    <company.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold">{company.name}</h3>
-                </div>
-
-                {/* Company Card */}
-                <motion.div
-                  className="bg-white rounded-2xl overflow-hidden shadow-xl"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="relative h-48 sm:h-56 overflow-hidden">
-                    <motion.img
-                      src={company.image}
-                      alt={company.name}
-                      className="w-full h-full object-cover"
-                      initial={{ scale: 1 }}
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white md:hidden">{company.tagline}</h3>
-                      <div className="hidden md:block">
-                        <h3 className="text-2xl font-bold text-white">{company.name}</h3>
-                        <p className="text-white/90">{company.tagline}</p>
-                      </div>
+                <div className={`w-full sm:w-1/2 pl-12 sm:pl-0 ${
+                  index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'
+                }`}>
+                  <motion.div
+                    className="bg-white p-4 sm:p-6 rounded-xl shadow-lg"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="flex items-center gap-3 sm:gap-4 mb-4">
+                      <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                      <h3 className="text-lg sm:text-xl font-bold">{company.year}</h3>
                     </div>
-                  </div>
-
-                  <div className="p-4 sm:p-6">
-                    <div className="space-y-4 mb-6">
-                      <div>
-                        <h4 className="font-bold text-gray-700">Industry</h4>
-                        <p className="text-gray-600">{company.industry}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-gray-700">Highlight</h4>
-                        <p className="text-gray-600">{company.highlight}</p>
-                      </div>
-                    </div>
+                    <h4 className="font-bold mb-2 text-base sm:text-lg">{company.name}</h4>
+                    <p className="text-gray-600 text-sm sm:text-base">{company.milestone}</p>
                     <motion.button
                       onClick={() => setSelectedCompany(company)}
-                      className="btn-primary w-full flex items-center justify-center gap-2"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      className="mt-3 sm:mt-4 text-primary font-medium flex items-center gap-2 text-sm sm:text-base"
+                      whileHover={{ x: 5 }}
                     >
-                      {company.cta}
-                      <ChevronRight className="w-5 h-5" />
+                      Learn More
+                      <ChevronRight className="w-4 h-4" />
                     </motion.button>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </div>
+                
+                <div className="absolute left-0 sm:left-1/2 top-0 sm:top-1/2 transform sm:-translate-y-1/2 sm:-translate-x-1/2">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-primary rounded-full border-4 border-white shadow-lg" />
+                </div>
               </motion.div>
             ))}
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      {/* Modal - Responsive adjustments */}
+      {/* Company Details Modal */}
       <AnimatePresence>
         {selectedCompany && (
           <motion.div
@@ -292,11 +356,13 @@ Achievements:
               animate="visible"
               exit="exit"
               className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="sticky top-0 bg-white z-10 p-4 sm:p-6 border-b flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  {React.createElement(selectedCompany.icon as React.ComponentType<any>, { className: "w-6 h-6 sm:w-8 sm:h-8 text-primary" })}
+                  {React.createElement(selectedCompany.icon as React.ComponentType<any>, {
+                    className: "w-6 h-6 sm:w-8 sm:h-8 text-primary",
+                  })}
                   <h3 className="text-xl sm:text-2xl font-bold">{selectedCompany.name}</h3>
                 </div>
                 <button
