@@ -2,6 +2,31 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+// Add this custom keyframe animation to your globals.css or equivalent
+const outlineAnimation = {
+  hidden: {
+    pathLength: 0,
+    opacity: 0
+  },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      pathLength: { duration: 2, ease: "easeInOut" },
+      opacity: { duration: 0.5 }
+    }
+  }
+};
+
+// First, add these animation variants at the top of your file
+const letterAnimationVariants = {
+  initial: { strokeDashoffset: 1 },
+  animate: {
+    strokeDashoffset: 0,
+    transition: { duration: 2, ease: "easeInOut" }
+  }
+};
+
 export const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -53,15 +78,64 @@ export const Hero = () => {
             className="text-white"
           >
             <motion.h1 
-              className="text-5xl md:text-6xl font-bold mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
               Innovating the Future Across{' '}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-                Healthcare, <span style={{ color: '#27026c' }}>IoT, Software ,<span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Engineering</span></span>
+              <span className="relative inline-block">
+                <span className="relative z-10">
+                  <motion.svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 400 100"
+                    style={{ overflow: 'visible' }}
+                  >
+                    <motion.text
+                      x="0"
+                      y="80"
+                      className="text-4xl sm:text-5xl md:text-6xl font-bold"
+                      fill="none"
+                      stroke="rgba(255, 255, 255, 0.4)"
+                      strokeWidth="0.5"
+                      strokeLinejoin="round"
+                      initial="initial"
+                      animate="animate"
+                      variants={letterAnimationVariants}
+                      style={{ strokeDasharray: 1 }}
+                    >
+                      Healthcare, IoT,
+                    </motion.text>
+                  </motion.svg>
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                    Healthcare, <span style={{ color: '#27026c' }}>IoT, Software,{' '}
+                    <motion.svg
+                      className="absolute inset-0 w-full h-full"
+                      viewBox="0 0 400 100"
+                      style={{ overflow: 'visible' }}
+                    >
+                      <motion.text
+                        x="0"
+                        y="80"
+                        className="text-4xl sm:text-5xl md:text-6xl font-bold"
+                        fill="none"
+                        stroke="rgba(255, 255, 255, 0.4)"
+                        strokeWidth="0.5"
+                        strokeLinejoin="round"
+                        initial="initial"
+                        animate="animate"
+                        variants={letterAnimationVariants}
+                        style={{ strokeDasharray: 1 }}
+                      >
+                        Software, Engineering
+                      </motion.text>
+                    </motion.svg>
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                      Engineering
+                    </span></span>
+                  </span>
                 </span>
+              </span>
             </motion.h1>
             <motion.p 
               className="text-xl text-gray-200 mb-8"

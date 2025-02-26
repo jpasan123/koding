@@ -234,60 +234,56 @@ Achievements:
                   transition={{ duration: 0.5 }}
                 >
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-xl transform scale-150" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-lg transform scale-125" />
+                    {/* Adjusted glow effects for mobile */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-lg transform scale-125" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-md transform scale-110" />
+                    
+                    {/* Responsive image sizing */}
                     <img
                       src="https://i.ibb.co/PZ8sBKQw/Whats-App-Image-2025-02-21-at-07-41-33-38309d32.jpg"
                       alt="Koding Logo"
-                      className="w-40 h-40 rounded-full shadow-xl relative z-12 border-4 border-white transform hover:scale-110 transition-transform duration-300"
+                      className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full shadow-xl relative z-12 border-4 border-white transform hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </motion.div>
 
                 {/* Company Logos on the Border */}
-                {companies.map((company, index) => {
-                  const position = getCirclePosition(index, companies.length);
-                  return (
-                    <motion.div
-                      key={index}
-                      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                      animate={{ x: position.x, y: position.y, rotate: position.rotate }}
-                      transition={{ duration: 0.1, ease: "linear" }} // Faster transition for smooth movement
-                    >
-                      <motion.div
-                        className="cursor-pointer group"
-                        whileHover={{ scale: 1.1 }}
-                        onClick={() => setSelectedCompany(company)}
-                      >
-                        <motion.div 
-                          className="bg-white p-2 rounded-full shadow-lg border-4 border-primary/10"
-                          whileHover={{ rotate: 12 }}
-                          style={{ transform: 'translate(-50%, -50%)' }} // Center logo on position
-                        >
-                          <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-white rounded-full overflow-hidden">
-                            <img
-                              src={company.image}
-                              alt={company.name}
-                              className="w-[85%] h-[85%] object-contain"
-                            />
-                          </div>
-                        </motion.div>
-
-                        {/* Company Name Tag */}
-                        <motion.div
-                          className="absolute left-1/2 top-full transform -translate-x-1/2 mt-2 whitespace-nowrap z-20"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          whileHover={{ y: -2 }}
-                        >
-                          <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg">
-                            <p className="text-xs sm:text-sm font-bold text-primary">{company.name}</p>
-                          </div>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
-                  );
-                })}
+{companies.map((company, index) => {
+  const position = getCirclePosition(index, companies.length);
+  return (
+    <motion.div
+      key={index}
+      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      animate={{ x: position.x, y: position.y, rotate: position.rotate }}
+      transition={{ duration: 0.1, ease: "linear" }} // Faster transition for smooth movement
+    >
+      <motion.div
+        className="cursor-pointer group"
+        whileHover={{ scale: 1.1 }}
+        onClick={() => setSelectedCompany(company)}
+      >
+        <motion.div 
+          className="bg-white p-2 rounded-full shadow-lg border-4 border-primary/10 relative"
+          whileHover={{ rotate: 12 }}
+          style={{ transform: 'translate(-50%, -50%)' }} // Center logo on position
+        >
+          <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-white rounded-full overflow-hidden">
+            <img
+              src={company.image}
+              alt={company.name}
+              className="w-[85%] h-[85%] object-contain"
+            />
+          </div>
+          
+          {/* Company Name Tag - Moved inside the logo container */}
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+            <p className="text-[10px] sm:text-xs font-bold text-primary">{company.name}</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+})}
               </div>
             </div>
           </div>
