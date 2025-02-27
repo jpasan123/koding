@@ -83,7 +83,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Innovating the Future Across{' '}
+              Knowledge For Innovation{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">
                   <motion.svg
@@ -124,7 +124,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Koding is the parent company of Jendo, Optha, and other cutting-edge firms pioneering advancements in medical technology, IoT, and digital solutions.
+              Koding is the parent company of Effective Solutions, Jendo, Optha, and other cutting-edge firms pioneering advancements in medical technology, IoT, and digital solutions.
             </motion.p>
             <motion.div 
               className="flex flex-wrap gap-4"

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { useState } from 'react';
 
 export const Contact = () => {
   const [ref, inView] = useInView({
@@ -50,6 +51,53 @@ export const Contact = () => {
     { icon: Youtube, label: 'YouTube', href: '#' },
   ];
 
+  // Add form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  
+  // Add loading and success states
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Handle input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Direct email handling
+      const emailData = {
+        to: ['keerthi@effectivesolutions.lk', 'heminda@example.com'],
+        from: formData.email,
+        name: formData.name,
+        message: formData.message
+      };
+
+      // Here you can implement your preferred email sending method
+      // For example, using your backend API endpoint
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-padding bg-white" ref={ref}>
       <motion.div
@@ -69,13 +117,17 @@ export const Contact = () => {
           <motion.div variants={itemVariants}>
             <div className="bg-gray-50 p-8 rounded-2xl">
               <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Name
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
@@ -85,6 +137,10 @@ export const Contact = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
@@ -93,16 +149,33 @@ export const Contact = () => {
                     Message
                   </label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     rows={4}
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent"
                   ></textarea>
                 </div>
+                
+                {/* Status messages */}
+                {submitStatus === 'success' && (
+                  <div className="text-green-600 text-sm">Message sent successfully!</div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="text-red-600 text-sm">Failed to send message. Please try again.</div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full px-4 py-2 rounded-lg text-white"
-                  style={{ backgroundColor: '#27026c' }}
+                  disabled={isLoading}
+                  className="w-full px-4 py-2 rounded-lg text-white transition-all"
+                  style={{ 
+                    backgroundColor: isLoading ? '#4a4a4a' : '#27026c',
+                    cursor: isLoading ? 'not-allowed' : 'pointer'
+                  }}
                 >
-                  Send Inquiry
+                  {isLoading ? 'Sending...' : 'Send Inquiry'}
                 </button>
                 {/* Google Maps Integration */}
               <div className="relative group mt-6">
