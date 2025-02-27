@@ -86,7 +86,7 @@ export const Testimonials = () => {
           ))}
         </div>
 
-        <motion.div variants={itemVariants}>
+        {/* <motion.div variants={itemVariants}>
           <h3 className="text-2xl font-bold mb-8 text-center">Recognitions & Awards</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {awards.map((award, index) => (
@@ -115,7 +115,7 @@ export const Testimonials = () => {
           >
             See More Success Stories
           </a>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </section>
   );

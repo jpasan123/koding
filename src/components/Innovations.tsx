@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Activity, Eye, Wifi, Brain } from 'lucide-react';
@@ -11,6 +11,17 @@ export const Innovations = () => {
     threshold: 0.1,
   });
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [currentMockupIndex, setCurrentMockupIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMockupIndex((prevIndex) => 
+        prevIndex === mockups.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const mockups = [
     {
@@ -93,7 +104,10 @@ export const Innovations = () => {
             variants={itemVariants}
             className="mb-16"
           >
-            <MockupDisplay mockups={mockups} />
+            <MockupDisplay 
+              mockups={mockups} 
+              currentIndex={currentMockupIndex}
+            />
           </motion.div>
         </motion.div>
 

@@ -6,8 +6,8 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Companies } from './components/Companies';
 import { Innovations } from './components/Innovations';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { Partnership } from './components/Partnership';
+// import { WhyChooseUs } from './components/WhyChooseUs';
+// import { Partnership } from './components/Partnership';
 import { Testimonials } from './components/Testimonials';
 import Team from './components/Team';
 import { Contact } from './components/Contact';
@@ -59,8 +59,8 @@ function App() {
             <About />
             <Companies />
             <Innovations />
-            <WhyChooseUs />
-            <Partnership />
+            {/* <WhyChooseUs /> */}
+            {/* <Partnership /> */}
             <Testimonials />
             <Team />
             <Contact />
