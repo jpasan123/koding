@@ -35,7 +35,7 @@ export const Innovations = () => {
       description: 'AI-powered retinal scan analysis and diagnosis system',
     },
     {
-      image: 'https://images.unsplash.com/photo-1576089172869-4f5f6f315620?auto=format&fit=crop&q=80',
+      image: 'https://i.ibb.co/7JFf1k57/download-4.jpg',
       title: 'IoT Control Center',
       description: 'Centralized management for healthcare IoT devices',
     },
@@ -58,7 +58,7 @@ export const Innovations = () => {
       icon: Wifi,
       title: 'IoT Healthcare',
       description: 'IoT-Driven Smart Healthcare Devices improving hospital efficiency and patient monitoring.',
-      image: 'https://images.unsplash.com/photo-1576089172869-4f5f6f315620?auto=format&fit=crop&q=80',
+      image: 'https://i.ibb.co/7JFf1k57/download-4.jpg',
     },
     {
       icon: Brain,

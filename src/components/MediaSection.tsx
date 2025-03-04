@@ -69,7 +69,7 @@ export const MediaSection = () => {
       source: "F6S",
       date: "2019-11-22",
       excerpt: "Pioneering AI-driven diagnostics for cardiovascular health...",
-      imageUrl: "https://i.ibb.co/JFpQZGFW/616962-large.jpg",
+      imageUrl: "https://i.ibb.co/JFpQZGFW/616962-large.jpg", // Fixed URL
       link: "https://www.f6s.com/company/jendoinnovations2#about",
     },
     {
@@ -77,7 +77,7 @@ export const MediaSection = () => {
       source: "Roar Media",
       date: "2018-09-30",
       excerpt: "Innovative healthtech solutions at the forefront of Sri Lanka's startup ecosystem...",
-      imageUrl: "https://i.ibb.co/MyVP47w8/Cover-maybe-X-e1478185235968.jpg",
+      imageUrl: "https://i.ibb.co/MyVP47w8/Cover-maybe-X-e1478185235968.jpg", // Fixed URL
       link: "https://roar.media/english/tech/events/the-jkx-open-innovation-challenge-finale",
     },
     {
@@ -156,6 +156,14 @@ export const MediaSection = () => {
       thumbnailUrl: "https://img.youtube.com/vi/MKTUO5NX1Qg/maxresdefault.jpg",
       videoUrl: "https://www.youtube.com/watch?v=MKTUO5NX1Qg",
     },
+    {
+        title: "UNIQ - A talk with Eng. Heminda Jayaweera | Entrepreneurship Through Innovation.",
+        channel: "Royal College Young Inventors Club",
+        date: "2020-12-05",
+        description: "Entrepreneurship Through Innovation.",
+        thumbnailUrl: "https://i.ibb.co/zH6qN2W4/OVP.jpg",
+        videoUrl: "https://www.youtube.com/watch?v=QjWVwiXmi34",
+    }
   ];
 
   // Pagination calculations for articles
@@ -225,21 +233,25 @@ export const MediaSection = () => {
               {currentArticles.map((article, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-xl overflow-hidden shadow-lg"
+                  className="bg-white rounded-xl overflow-hidden shadow-lg h-full flex flex-col"
                   variants={cardVariants}
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-48 overflow-hidden relative">
                     <img 
                       src={article.imageUrl} 
                       alt={article.title}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-110"
+                      onError={(e) => {
+                        // Fallback image in case of loading errors
+                        e.currentTarget.src = "https://via.placeholder.com/400x225?text=Image+Unavailable";
+                      }}
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     <div className="flex items-center mb-3">
                       <span className="bg-[#27026c]/10 text-[#27026c] text-xs px-3 py-1 rounded-full font-medium">
                         {article.source}
@@ -333,7 +345,10 @@ export const MediaSection = () => {
                   <img 
                     src={interview.thumbnailUrl} 
                     alt={interview.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://via.placeholder.com/640x360?text=Video+Thumbnail+Unavailable";
+                    }}
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <a 
