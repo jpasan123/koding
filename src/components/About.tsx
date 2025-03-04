@@ -38,12 +38,12 @@ export const About = () => {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
       >
-        <motion.div variants={itemVariants} className="text-center mb-16">
+        {/* <motion.div variants={itemVariants} className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-6">Who We Are</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Koding is a global holding company that invests in and manages pioneering technology firms specializing in healthcare, IoT, and software engineering. Led by visionary entrepreneur Keerthi Kodithuwakku, Koding brings together world-class expertise to develop breakthrough solutions that enhance industries and improve lives.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div variants={itemVariants} className="mb-16">
           <div className="p-8 rounded-2xl text-white text-center border-4" style={{ backgroundColor: '#27026c', borderColor: '#27026c' }}>
@@ -62,7 +62,8 @@ export const About = () => {
               <p>To lead in biomedical and IoT innovations for better healthcare and connectivity.</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-xl">
-              <h4 className="font-bold mb-2">Practical Solutions</h4>
+              <h4 className="font-bold mb-2">promoting Intellectual Property
+              </h4>
               <p>To integrate cutting-edge research into practical, scalable solutions.</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-xl">

@@ -5,11 +5,11 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const sections = {
-    services: [
-      { name: 'Cloud Solutions', href: '#' },
-      { name: 'Web Development', href: '#' },
-      { name: 'Mobile Apps', href: '#' }
-    ],
+    // services: [
+    //   { name: 'Cloud Solutions', href: '#' },
+    //   { name: 'Web Development', href: '#' },
+    //   { name: 'Mobile Apps', href: '#' }
+    // ],
     company: [
       { name: 'About Us', href: '#about' },
       { name: 'Our Team', href: '#team' },
@@ -45,7 +45,7 @@ export const Footer = () => {
             </p>
           </div>
 
-          {/* Services */}
+          {/* Services
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
@@ -60,7 +60,7 @@ export const Footer = () => {
                 </motion.li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Company */}
           <div>

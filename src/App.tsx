@@ -8,7 +8,8 @@ import { Companies } from './components/Companies';
 import { Innovations } from './components/Innovations';
 // import { WhyChooseUs } from './components/WhyChooseUs';
 // import { Partnership } from './components/Partnership';
-import { Testimonials } from './components/Testimonials';
+// import { Testimonials } from './components/Testimonials';
+import { MediaSection } from './components/MediaSection';
 import Team from './components/Team';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -61,7 +62,8 @@ function App() {
             <Innovations />
             {/* <WhyChooseUs /> */}
             {/* <Partnership /> */}
-            <Testimonials />
+            {/* <Testimonials /> */}
+            <MediaSection /> 
             <Team />
             <Contact />
           </main>

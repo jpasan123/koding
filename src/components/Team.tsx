@@ -87,7 +87,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ member, isOpen, onClo
 const teamMembers: TeamMember[] = [
   {
     name: 'Keerthi Kodithuwakku',
-    role: 'CEO & Founder',
+    role: 'CEO & CO Founder',
     image: 'https://i.ibb.co/spNrKHy6/464475539-8493908874024053-2062765657774756386-n-1.jpg',
     education: 'BSc. Eng (HONS)',
     title: 'Co-Founder and Chief Executive Officer',
@@ -96,7 +96,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Heminda Jayawardana',
-    role: 'Director',
+    role: 'Co-Founder',
     image: 'https://i.ibb.co/QjKzJxVv/OIP-9.jpg',
     education: 'MA. User Experience Design',
     title: 'Director of User Experience',
@@ -124,7 +124,8 @@ const Team: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Our Team</h2>
+          <h2 className="text-4xl font-bold mb-4">Our Visionary Leader
+          </h2>
           <p className="text-xl text-gray-600">Meet the minds behind Koding's innovation</p>
         </motion.div>
 

@@ -83,7 +83,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Knowledge For Innovation{' '}
+              Knowledge driven Organization for deep tech  innovation{' '}
               <span className="relative inline-block">
                 <span className="relative z-10">
                   <motion.svg
@@ -124,7 +124,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Koding is the parent company of Effective Solutions, Jendo, Optha, and other cutting-edge firms pioneering advancements in medical technology, IoT, and digital solutions.
+              Founded with the vision to Build Intellectual properties specialized in the field of Medical Devices, AI solutions and immersive technologies.
             </motion.p>
             <motion.div 
               className="flex flex-wrap gap-4"
@@ -139,7 +139,7 @@ export const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 >
-                Explore Our Companies
+                 portfolio Companies 
                 <ArrowRight size={20} />
                 </motion.a>
               <motion.a
@@ -148,7 +148,7 @@ export const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                See Our Innovations
+                featured projects
               </motion.a>
             </motion.div>
           </motion.div>

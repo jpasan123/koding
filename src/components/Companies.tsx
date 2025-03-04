@@ -289,7 +289,7 @@ Achievements:
           </div>
 
           {/* Timeline */}
-          <div className="relative mt-20 px-4">
+          {/* <div className="relative mt-20 px-4">
             <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary" />
             
             {companies.map((company, index) => (
@@ -332,7 +332,7 @@ Achievements:
                 </div>
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </motion.div>
       </div>
 
