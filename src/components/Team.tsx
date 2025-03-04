@@ -124,7 +124,7 @@ const Team: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Our Visionary Leader
+          <h2 className="text-4xl font-bold mb-4">Our Visionary Leaders
           </h2>
           <p className="text-xl text-gray-600">Meet the minds behind Koding's innovation</p>
         </motion.div>

@@ -23,7 +23,7 @@ export const Navbar = () => {
         >
           <div className="flex items-center">
             <img
-              src="https://i.ibb.co/PZ8sBKQw/Whats-App-Image-2025-02-21-at-07-41-33-38309d32.jpg"
+              src="https://i.ibb.co/BVhYCZvh/Whats-App-Image-2025-03-04-at-18-27-33-aba0c571.jpg"
               alt="Logo"
               className="w-12.5 h-12 object-contain"
             />

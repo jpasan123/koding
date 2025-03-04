@@ -22,11 +22,14 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState('home');
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
 
+  useEffect(() => {
+    // Remove this timer since we're now using the callback from LoadingScreen
+    // The timer in LoadingScreen component will control when loading finishes
+    
     // Handle navigation based on hash
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
@@ -40,7 +43,6 @@ function App() {
     handleHashChange(); // Initial check
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
@@ -74,7 +76,7 @@ function App() {
   return (
     <>
       <AnimatePresence>
-        {loading && <LoadingScreen />}
+        {loading && <LoadingScreen onComplete={handleLoadingComplete} />}
       </AnimatePresence>
 
       <div className="relative">
