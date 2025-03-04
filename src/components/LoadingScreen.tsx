@@ -56,7 +56,7 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          Empowering Industries. Transforming Lives.
+          Knowledge To Innovations.
         </motion.p>
         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
           <motion.div
