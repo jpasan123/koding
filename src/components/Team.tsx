@@ -97,7 +97,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Heminda Jayawardana',
     role: 'Co-Founder',
-    image: 'https://i.ibb.co/QjKzJxVv/OIP-9.jpg',
+    image: 'https://i.ibb.co/mrTf6TT8/Whats-App-Image-2025-03-04-at-23-49-01-ba9e80f5.jpg',
     education: 'MA. User Experience Design',
     title: 'Director of User Experience',
     linkedin: 'https://www.linkedin.com/in/heminda/?originalSubdomain=lk',
