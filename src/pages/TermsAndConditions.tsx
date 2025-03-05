@@ -1,15 +1,22 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 export const TermsAndConditions = () => {
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
-      <motion.div 
+      <motion.div
         className="max-w-4xl mx-auto px-4 py-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-4xl font-bold mb-8">Terms and Conditions</h1>
-        
+
         <div className="space-y-8 text-gray-700">
           <section>
             <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>

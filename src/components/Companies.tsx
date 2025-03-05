@@ -169,8 +169,8 @@ Achievements:
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: { type: "spring", damping: 25, stiffness: 500 }
     },
@@ -182,10 +182,10 @@ Achievements:
     const angle = (index * (360 / totalItems) + rotationAngle) * (Math.PI / 180);
 
     // Responsive container size
-    const containerSize = window.innerWidth < 400 ? 280 : 
+    const containerSize = window.innerWidth < 400 ? 280 :
                          window.innerWidth < 640 ? 350 :
-                         window.innerWidth < 768 ? 450 : 
-                         window.innerWidth < 1024 ? 600 : 
+                         window.innerWidth < 768 ? 450 :
+                         window.innerWidth < 1024 ? 600 :
                          700;
 
     // Exact radius is half the container size (blue border)
@@ -238,9 +238,9 @@ Achievements:
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-lg transform scale-125" />
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-md transform scale-110" />
                     
-                    {/* Responsive image sizing */}
+                    {/* Updated with high-resolution image */}
                     <img
-                      src="https://i.ibb.co/PZ8sBKQw/Whats-App-Image-2025-02-21-at-07-41-33-38309d32.jpg"
+                      src="https://i.ibb.co/BVhYCZvh/Whats-App-Image-2025-03-04-at-18-27-33-aba0c571.jpg" // Replace with your high-resolution URL
                       alt="Koding Logo"
                       className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full shadow-xl relative z-12 border-4 border-white transform hover:scale-105 transition-transform duration-300"
                     />
@@ -248,47 +248,47 @@ Achievements:
                 </motion.div>
 
                 {/* Company Logos on the Border */}
-{companies.map((company, index) => {
-  const position = getCirclePosition(index, companies.length);
-  return (
-    <motion.div
-      key={index}
-      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-      animate={{ x: position.x, y: position.y, rotate: position.rotate }}
-      transition={{ duration: 0.1, ease: "linear" }} // Faster transition for smooth movement
-    >
-      <motion.div
-        className="cursor-pointer group"
-        whileHover={{ scale: 1.1 }}
-        onClick={() => setSelectedCompany(company)}
-      >
-        <motion.div 
-          className="bg-white p-2 rounded-full shadow-lg border-4 border-primary/10 relative"
-          whileHover={{ rotate: 12 }}
-          style={{ transform: 'translate(-50%, -50%)' }} // Center logo on position
-        >
-          <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-white rounded-full overflow-hidden">
-            <img
-              src={company.image}
-              alt={company.name}
-              className="w-[85%] h-[85%] object-contain"
-            />
-          </div>
-          
-          {/* Company Name Tag - Moved inside the logo container */}
-          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
-            <p className="text-[10px] sm:text-xs font-bold text-primary">{company.name}</p>
-          </div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
-  );
-})}
+                {companies.map((company, index) => {
+                  const position = getCirclePosition(index, companies.length);
+                  return (
+                    <motion.div
+                      key={index}
+                      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      animate={{ x: position.x, y: position.y, rotate: position.rotate }}
+                      transition={{ duration: 0.1, ease: "linear" }} // Faster transition for smooth movement
+                    >
+                      <motion.div
+                        className="cursor-pointer group"
+                        whileHover={{ scale: 1.1 }}
+                        onClick={() => setSelectedCompany(company)}
+                      >
+                        <motion.div 
+                          className="bg-white p-2 rounded-full shadow-lg border-4 border-primary/10 relative"
+                          whileHover={{ rotate: 12 }}
+                          style={{ transform: 'translate(-50%, -50%)' }} // Center logo on position
+                        >
+                          <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center bg-white rounded-full overflow-hidden">
+                            <img
+                              src={company.image}
+                              alt={company.name}
+                              className="w-[85%] h-[85%] object-contain"
+                            />
+                          </div>
+                          
+                          {/* Company Name Tag - Moved inside the logo container */}
+                          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+                            <p className="text-[10px] sm:text-xs font-bold text-primary">{company.name}</p>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          {/* Timeline */}
+          {/* Timeline (commented out as in your original code) */}
           {/* <div className="relative mt-20 px-4">
             <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary" />
             

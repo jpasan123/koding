@@ -6,9 +6,6 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Companies } from './components/Companies';
 import { Innovations } from './components/Innovations';
-// import { WhyChooseUs } from './components/WhyChooseUs';
-// import { Partnership } from './components/Partnership';
-// import { Testimonials } from './components/Testimonials';
 import { MediaSection } from './components/MediaSection';
 import Team from './components/Team';
 import { Contact } from './components/Contact';
@@ -27,16 +24,23 @@ function App() {
   };
 
   useEffect(() => {
-    // Remove this timer since we're now using the callback from LoadingScreen
-    // The timer in LoadingScreen component will control when loading finishes
-    
-    // Handle navigation based on hash
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
-      if (hash === 'terms') setCurrentPage('terms');
-      else if (hash === 'privacy') setCurrentPage('privacy');
-      else if (hash === 'cookies') setCurrentPage('cookies');
-      else setCurrentPage('home');
+      let newPage = 'home';
+
+      if (hash === 'terms') {
+        newPage = 'terms';
+      } else if (hash === 'privacy') {
+        newPage = 'privacy';
+      } else if (hash === 'cookies') {
+        newPage = 'cookies';
+      }
+
+      setCurrentPage(newPage);
+      // Ensure scroll to top happens after the DOM updates
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -62,10 +66,7 @@ function App() {
             <About />
             <Companies />
             <Innovations />
-            {/* <WhyChooseUs /> */}
-            {/* <Partnership /> */}
-            {/* <Testimonials /> */}
-            <MediaSection /> 
+            <MediaSection />
             <Team />
             <Contact />
           </main>
