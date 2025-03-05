@@ -87,7 +87,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ member, isOpen, onClo
 const teamMembers: TeamMember[] = [
   {
     name: 'Keerthi Kodithuwakku',
-    role: 'CEO & CO Founder',
+    role: 'CEO & Co-Founder',
     image: 'https://i.ibb.co/spNrKHy6/464475539-8493908874024053-2062765657774756386-n-1.jpg',
     education: 'BSc. Eng (HONS)',
     title: 'Co-Founder and Chief Executive Officer',
