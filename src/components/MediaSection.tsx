@@ -163,7 +163,15 @@ export const MediaSection = () => {
         description: "Entrepreneurship Through Innovation.",
         thumbnailUrl: "https://i.ibb.co/zH6qN2W4/OVP.jpg",
         videoUrl: "https://www.youtube.com/watch?v=QjWVwiXmi34",
-    }
+    },
+    {
+      title: "මාර්ගගත සේවා අාදායම් බද්ද සාධාරණද? (Online Service Tax) | අලුත් පාර්ලිමේන්තුව | 2025.03.05",
+      channel: "Ada Derana",
+      date: "2025-03-06",
+      description: "Online Service Tax.",
+      thumbnailUrl: "https://i.ibb.co/hxdTbd1S/Screenshot-2025-03-06-101029.png",
+      videoUrl: "https://www.youtube.com/live/c2cfkE9AYh4?si=0CnrNm4VkMh7x0Vc",
+  }
   ];
 
   // Pagination calculations for articles
