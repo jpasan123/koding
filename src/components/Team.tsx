@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Linkedin, Mail, X } from 'lucide-react';
+import { Linkedin, Mail, X, Twitter, Globe } from 'lucide-react';
 
 interface TeamMember {
   name: string;
@@ -10,6 +10,8 @@ interface TeamMember {
   title: string;
   linkedin: string;
   email: string;
+  twitter?: string; // Optional Twitter profile
+  website?: string; // Optional personal website
 }
 
 interface TeamMemberModalProps {
@@ -93,6 +95,7 @@ const teamMembers: TeamMember[] = [
     title: 'Co-Founder and Chief Executive Officer',
     linkedin: 'https://www.linkedin.com/in/keerthi-kodithuwakku-b98149219/?originalSubdomain=lk',
     email: 'keerthi@example.com',
+    twitter: 'https://twitter.com/keerthikodithuwakku',
   },
   {
     name: 'Heminda Jayawardana',
@@ -102,6 +105,7 @@ const teamMembers: TeamMember[] = [
     title: 'Director of User Experience',
     linkedin: 'https://www.linkedin.com/in/heminda/?originalSubdomain=lk',
     email: 'heminda@example.com',
+    twitter: 'https://twitter.com/heminda',
   },
   // Add more team members as needed
 ];
@@ -155,6 +159,53 @@ const Team: React.FC = () => {
                 />
                 <h3 className="text-2xl font-bold mt-6">{member.name}</h3>
                 <p className="text-blue-600 font-medium">{member.role}</p>
+                <div className="flex justify-center gap-4 mt-2">
+                  <motion.a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -3, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
+                  >
+                    <Linkedin size={18} />
+                  </motion.a>
+                  
+                  <motion.a
+                    href={`mailto:${member.email}`}
+                    whileHover={{ y: -3, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="bg-gray-600 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
+                  >
+                    <Mail size={18} />
+                  </motion.a>
+                  
+                  {member.twitter && (
+                    <motion.a
+                      href={member.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3, scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="bg-[#1DA1F2] text-white p-2 rounded-full hover:bg-blue-400 transition-colors"
+                    >
+                      <Twitter size={18} />
+                    </motion.a>
+                  )}
+                  
+                  {member.website && (
+                    <motion.a
+                      href={member.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3, scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 transition-colors"
+                    >
+                      <Globe size={18} />
+                    </motion.a>
+                  )}
+                </div>
               </motion.div>
             </motion.div>
           ))}
