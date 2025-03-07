@@ -94,7 +94,7 @@ const teamMembers: TeamMember[] = [
     education: 'BSc. Eng (HONS)',
     title: 'Co-Founder and Chief Executive Officer',
     linkedin: 'https://www.linkedin.com/in/keerthi-kodithuwakku-b98149219/?originalSubdomain=lk',
-    email: 'keerthi@example.com',
+    email: 'keerthi@effectivesolutions.lk',
     twitter: 'https://twitter.com/keerthikodithuwakku',
   },
   {
@@ -104,7 +104,7 @@ const teamMembers: TeamMember[] = [
     education: 'MA. User Experience Design',
     title: 'Director of User Experience',
     linkedin: 'https://www.linkedin.com/in/heminda/?originalSubdomain=lk',
-    email: 'heminda@example.com',
+    email: 'heminda@gmail.com',
     twitter: 'https://twitter.com/heminda',
   },
   // Add more team members as needed
